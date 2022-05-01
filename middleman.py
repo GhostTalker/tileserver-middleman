@@ -99,7 +99,9 @@ def gen_staticmap(request, map_kind, template_json=None, template=None):
     extra_template = ""
     if template:
         extra_template = "/" + template
-    response = requests.post(f"{get_tileserverurl()}{map_kind}{extra_template}", json=data)
+
+    tileserverurl = get_tileserverurl()
+    response = requests.post(f"{tileserverurl}{map_kind}{extra_template}", json=data)
     
     if response.status_code >= 400:
         return response.content
@@ -110,7 +112,7 @@ def gen_staticmap(request, map_kind, template_json=None, template=None):
     message = webhook.send(wait=True, file=discord.File(stream, filename="map.png"))
     stream.close()
     stop = time.time()
-    print(f"Served tile in {stop-start} seconds")
+    print(f"Served tile in {stop-start} seconds from tileserver {tileserverurl}")
 
     return message.attachments[0].url
 
