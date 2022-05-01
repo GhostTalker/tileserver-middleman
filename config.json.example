@@ -6,7 +6,7 @@
     "db_pass": "",
 
     "port": 3031,
-    "tileserver_url": "https://tiles.map.com/",
+    "tileserver_url": ["https://tiles1.map.com/","https://tiles2.map.com/"],
     "templates_path": "/pogo/tileserver/Templates/",
 
     "webhooks": ["discord.com/webhook", "discord.com/webhook"]

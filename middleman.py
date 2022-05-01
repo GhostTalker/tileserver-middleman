@@ -22,7 +22,6 @@ for webhook_url in config["webhooks"]:
 
 pos = 0
 
-
 def get_webhook():
     global pos
     pos += 1
@@ -30,7 +29,20 @@ def get_webhook():
         pos = 0
     return webhooks[pos]
 
+tileservers = []
+for tileserver_url in config["tileserver_url"]:
+    tileserver = tileserver_url
+    tileservers.append(tileserver)
 
+pos_tileserver = 0
+
+def get_tileserverurl():
+    global pos_tileserver
+    pos_tileserver += 1
+    if pos_tileserver > len(tileservers) - 1:
+        pos_tileserver = 0
+    return tileservers[pos_tileserver]
+	
 def test_vars(var):
     try:
         return float(var)
@@ -87,7 +99,7 @@ def gen_staticmap(request, map_kind, template_json=None, template=None):
     extra_template = ""
     if template:
         extra_template = "/" + template
-    response = requests.post(f"{config['tileserver_url']}{map_kind}{extra_template}", json=data)
+    response = requests.post(f"{get_tileserverurl()}{map_kind}{extra_template}", json=data)
     
     if response.status_code >= 400:
         return response.content

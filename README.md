@@ -1,8 +1,6 @@
-## This repo is no longer maintained
+## Continue the project of Malte
 
-Due to a lack of motivation and time, I've decided to archive most of my repos.
-
-At the time of writing this it should be fine to use. I didn't have any further plans for it. Just the code is a bit ugly as I've scrampled it together pretty quickly
+Because of stopping the development by Malte i started to adjust this code to use multiple tileservers.
 
 
 # tileserver-middleman
